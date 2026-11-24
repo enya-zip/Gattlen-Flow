@@ -15,11 +15,12 @@ for(let level=1;level<=12;level++)for(const seed of[1,20261028,20261231,777]){
  const won=solve(s);assert.equal(isGameOver(won).over,true);assert.ok(won.score>=100&&won.score<=1000);
  assert.equal(validateAction(won,"p",{type:"rotate",cell:rot}).ok,false);count++;
 }
-const dailyA=start(12,20261028,"daily"),dailyB=start(12,20261028,"daily");assert.deepEqual(dailyA,dailyB);
-assert.notDeepEqual(dailyA.board,start(12,20261029,"daily").board);
+const seededA=start(12,20261028),seededB=start(12,20261028);assert.deepEqual(seededA,seededB);
+assert.notDeepEqual(seededA.board,start(12,20261029).board);
+assert.equal(validateAction(setup(["p"]),"p",{type:"start",level:12,seed:20261028,mode:"daily"}).ok,false,"the daily challenge is removed");
 let campaign=applyAction(setup(["p"]),"p",{type:"start",level:1,seed:1,mode:"campaign"});assert.equal(validateAction(campaign,"p",{type:"start",level:13,seed:1,mode:"campaign"}).ok,false);campaign=solve(campaign);assert.equal(campaign.unlocked,2);
 assert.equal(validateAction(setup(["p"]),"p",{type:"start",level:1,seed:0,mode:"challenge"}).ok,false);
-console.log("PASS: "+count+" level/seed combinations solvable; immutable actions, guarded inputs, daily determinism, score integrity and progression checked.");
+console.log("PASS: "+count+" level/seed combinations solvable; immutable actions, guarded inputs, seed determinism, score integrity and progression checked.");
 
 for(let level=1;level<=12;level++){assert.deepEqual(viewFor(start(level,1,"campaign"),"p").board,viewFor(start(level,1,"challenge"),"p").board,"shared campaign challenges must keep the identical starting board");}
 console.log("PASS: friend challenges preserve every campaign starting board.");

@@ -5,9 +5,15 @@ Die Rangliste speichert Name, E-Mail-Adresse und Punkte. Andere Spieler sehen nu
 E-Mail-Adressen sind nur im Supabase-Dashboard sichtbar.
 
 ## Was gezählt wird
-Gewertet wird **die Reise**: die Summe der besten Punkte aus allen 12 Levels (pro Level 100 bis 1000 Punkte, höchstens 12'000).
-Nach jedem geschafften Level kann man sich über «Zur Rangliste» eintragen. Wer später mehr Punkte hat, trägt sich einfach nochmals ein.
-Die Tageschallenge zählt nicht für die Rangliste. Die Rangliste ist auch oben rechts über das Pokal-Symbol erreichbar.
+Gewertet wird **die Zeit**: Wer ein Level am schnellsten schafft, steht zuoberst. Jedes der 12 Levels hat eine eigene Rangliste.
+- Die Uhr läuft ab dem Start des Levels und ist im Spiel oben bei «ZEIT» sichtbar.
+- Jeder Tipp zählt 10 Sekunden zur Zeit dazu (sonst wäre man mit Tipps am schnellsten).
+- Bei gleicher Zeit gewinnt, wer weniger Züge brauchte.
+- Pro E-Mail-Adresse und Level zählt nur die beste Zeit.
+- Wer die Seite mitten im Level neu lädt, bekommt für diesen Versuch keine Zeit (sonst könnte man die Uhr zurücksetzen).
+
+Nach jedem geschafften Level gibt es den Knopf «Zeit in die Rangliste eintragen». Die Ranglisten aller Levels sind
+auch oben rechts über das Pokal-Symbol erreichbar. Die Tageschallenge gibt es nicht mehr.
 
 ## 1. Datenbank vorbereiten (einmalig)
 1. Auf https://supabase.com das Projekt **Ranglisten der Spiele** öffnen.
@@ -24,13 +30,13 @@ sonst würde der Browser die Verbindung blockieren.
 
 ## Einträge ansehen
 Supabase → **Table Editor**:
-- `gattlen_flow_rangliste`: bestes Ergebnis pro Spieler mit Platz, Name, E-Mail, Punkten, geschafften Levels, Sternen, Anzahl Einträge und Datum.
+- `gattlen_flow_rangliste`: beste Zeit pro Spieler und Level mit Level, Platz, Name, E-Mail, Sekunden, Zügen, Tipps, Anzahl Einträge und Datum.
 - `gattlen_flow_alle_spiele`: alle einzelnen Einträge. Hier lassen sich Einträge löschen
   (z. B. bei Auskunfts- oder Löschanfragen nach Datenschutzgesetz oder bei verdächtigen Punktzahlen).
 
 ## Gut zu wissen
-- Pro E-Mail-Adresse zählt nur das beste Ergebnis.
-- Pro E-Mail-Adresse sind höchstens 20 Einträge pro Stunde möglich (Spam-Schutz).
-- Die Datenbank lehnt unmögliche Werte ab (z. B. mehr als 1000 Punkte oder mehr als 3 Sterne pro Level).
-- Die Punkte stammen aus dem Browser. Wer sich mit Technik auskennt, könnte trotzdem eine falsche Punktzahl einsenden.
-  Verdächtige Einträge vor einer Gewinnerauswahl prüfen.
+- Pro E-Mail-Adresse sind höchstens 30 Einträge pro Stunde möglich (Spam-Schutz).
+- Die Datenbank lehnt unmögliche Werte ab (z. B. weniger als 1 Sekunde oder eine Zeit ohne die Strafzeit für Tipps).
+- Das SQL-Skript ersetzt frühere Entwürfe der Rangliste automatisch.
+- Die Zeit wird im Browser gemessen. Wer sich mit Technik auskennt, könnte trotzdem eine falsche Zeit einsenden.
+  Verdächtige Einträge (z. B. unrealistisch kurze Zeiten) vor einer Gewinnerauswahl prüfen.

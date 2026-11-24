@@ -81,10 +81,9 @@ export function validateAction(state,playerId,action) {
   if(!action||typeof action!=="object"||Array.isArray(action))return {ok:false,error:"invalid_action"};
   if(action.type==="start"){
     if(!Number.isInteger(action.level)||action.level<1||action.level>12)return {ok:false,error:"invalid_level"};
-    if(!["campaign","daily","challenge"].includes(action.mode))return {ok:false,error:"invalid_mode"};
+    if(!["campaign","challenge"].includes(action.mode))return {ok:false,error:"invalid_mode"};
     if(!Number.isInteger(action.seed)||action.seed<1||action.seed>99999999)return {ok:false,error:"invalid_seed"};
     if(action.mode==="campaign"&&action.seed!==1)return {ok:false,error:"invalid_seed"};
-    if(action.mode==="daily"&&action.level!==12)return {ok:false,error:"invalid_level"};
     return {ok:true};
   }
   if(!state.initialized)return {ok:false,error:"not_started"};

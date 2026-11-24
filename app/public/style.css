@@ -2,16 +2,17 @@
 @media(max-width:800px){.topbar{height:52px}.layout{margin-top:8px;margin-bottom:18px}.intro{padding-bottom:12px}.intro .eyebrow{display:none}.intro h1 em{font-size:42px}.tagline{margin-top:4px;font-size:12px}.scene{height:50px}.scenechip{bottom:10px}.gameinner{padding-top:12px;padding-bottom:10px}.stats{margin-top:12px;margin-bottom:10px}.feedback{min-height:32px;padding-top:8px;padding-bottom:7px}.powerbutton{min-height:44px;padding-top:11px;padding-bottom:11px}.tools{margin-top:11px}.tools button{padding-top:8px;padding-bottom:8px}.progressbar{margin-top:12px}.panelbottom{margin-top:8px}}
 
 /* Rangliste */
-.boardlink{display:inline-flex;gap:6px;background:none;padding:0;margin:0 0 14px;font-size:13px;font-weight:800;color:var(--blue);border-bottom:1px solid currentColor}.boardlink+.solarlink{margin-left:0}
-.boardbutton{margin:12px 0 0!important}.boardbutton+.secondary{margin-top:10px}
+.boardlink{display:inline-flex;gap:6px;background:none;padding:0;margin:0 0 14px;font-size:13px;font-weight:800;color:var(--blue);border-bottom:1px solid currentColor}
+.boardbutton{margin:12px 0 0!important}.boardbutton+.secondary{margin-top:10px}.boardbutton[hidden]{display:none}
+.stats>div{min-width:0}.stats strong{white-space:nowrap;font-variant-numeric:tabular-nums}
 .board-dialog{max-height:calc(100dvh - 30px);overflow:auto}
 .board-dialog h2{margin-bottom:14px}
 .board-score{display:flex;flex-direction:column;align-items:center;background:var(--soft);border-radius:16px;padding:12px 16px;margin:0 0 10px}.board-score[hidden]{display:none}
 .board-score span{font-size:9px;font-weight:800;letter-spacing:1.6px;color:var(--muted)}
 .board-score strong{color:var(--blue);font-size:42px;line-height:1.05;font-weight:900;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
 .board-score small{font-size:12px;font-weight:700;color:var(--green)}
-.board-rule{font-size:12px;color:var(--muted);line-height:1.45;margin:0 0 6px}
-#board-entry{display:flex;flex-direction:column}#board-entry>p{font-size:14px;margin:8px 0 0}#board-entry[hidden],#board-view[hidden],.board-message[hidden]{display:none}
+.board-rule{font-size:11px;color:var(--muted);line-height:1.45;margin:12px 0 0}
+#board-entry{display:flex;flex-direction:column}#board-entry>p{font-size:14px;margin:8px 0 0}#board-entry[hidden],#board-view[hidden],.board-levels[hidden],.board-message[hidden]{display:none}
 .board-form{display:flex;flex-direction:column;text-align:left}
 .board-form label{font-size:12px;font-weight:800;margin:14px 0 6px}
 .board-form input[type=text],.board-form input[type=email]{width:100%;background:#fff;color:var(--ink);border:1px solid #c9d4e1;border-radius:12px;padding:13px 14px;font-size:16px}
@@ -22,16 +23,21 @@
 .board-consent input{flex:0 0 19px;width:19px;height:19px;margin:1px 0 0;accent-color:var(--blue)}
 .board-form .primary:disabled{opacity:.6}
 .board-view-only{margin:16px auto 0;background:none;font-size:12px;font-weight:800;color:var(--blue)}
+.board-levels{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:4px 0 14px}
+.board-levels button{background:#edf2f8;color:var(--blue);border-radius:10px;padding:8px 0;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.board-levels button[aria-pressed=true]{background:var(--blue);color:#fff}
+.board-level-title{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--green);margin:0 0 4px}
 .board-rank-note{font-weight:800;color:var(--ink);margin:6px 0 10px}
 .board-list{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--line);text-align:left}
-.board-list li{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;padding:11px 8px;border-bottom:1px solid var(--line);font-size:14px}
+.board-list li{display:grid;grid-template-columns:30px 1fr auto auto;gap:10px;align-items:center;padding:11px 8px;border-bottom:1px solid var(--line);font-size:14px}
 .board-list li.mine{background:#88b3341f;outline:1px solid #88b33499;outline-offset:-1px;border-radius:8px}
 .board-rank{color:var(--muted);font-weight:900;font-variant-numeric:tabular-nums}
 .board-list li:nth-child(-n+3):not(.board-gap) .board-rank{color:var(--green)}
 .board-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .board-name small{color:var(--green);font-size:9px;font-weight:900;letter-spacing:1px}
-.board-list strong{font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums}
+.board-moves{font-size:11px;color:var(--muted);white-space:nowrap}
+.board-list strong{font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums;min-width:62px;text-align:right}
 .board-list li.board-gap{display:block;text-align:center;color:var(--muted);padding:4px}
 .board-message{font-size:13px;color:var(--muted);margin:12px 0 0}
 #board-again{margin-bottom:0}
-@media(max-width:760px){.board-score strong{font-size:36px}.board-list li{grid-template-columns:30px 1fr auto;padding:10px 4px;font-size:13px}}
+@media(max-width:760px){.board-score strong{font-size:36px}.board-list li{grid-template-columns:26px 1fr auto auto;gap:8px;padding:10px 4px;font-size:13px}.resultstats{gap:26px}}
