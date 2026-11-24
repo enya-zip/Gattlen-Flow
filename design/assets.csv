@@ -1,0 +1,9 @@
+id,role,type,description,size/ratio,style line ref,source
+panorama,landing and game header,background,Walliser mountain village,16:9,STYLE_FORMULA,generate
+symbols,source targets and scenery,sprite,six miniature equipment icons,1:1 grid 3x2,STYLE_FORMULA,generate
+cover-a,launch scene candidate,image,energised miniature Alpine village,3:2 2k,STYLE_FORMULA,generate
+cover-b,launch scene alternative,image,energised miniature Alpine village,3:2 2k,STYLE_FORMULA,generate
+music,optional loop after sound toggle,audio,calm playful electronic puzzle music,40 seconds,audio direction,generate
+rotate,rotation acknowledgement,audio,soft tactile click,1 second,audio direction,generate
+win,victory acknowledgement,audio,short warm energy chime,2 seconds,audio direction,generate
+brand-logo,header logo,image,original Gattlen wordmark,original,website brand,reference_media[0]
