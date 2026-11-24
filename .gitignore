@@ -1,3 +1,4 @@
-
 refs/
 /refs/
+# Wird beim Veröffentlichen auf GitHub Pages aus app/src/logic.js kopiert.
+app/public/logic.js

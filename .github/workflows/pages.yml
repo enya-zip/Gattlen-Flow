@@ -1,0 +1,34 @@
+# Veröffentlicht das Spiel bei jedem Push auf "main" automatisch auf GitHub Pages.
+# Der Inhalt von app/public wird in den Branch "gh-pages" kopiert;
+# GitHub Pages zeigt diesen Branch dann öffentlich an.
+# Auf GitHub Pages gibt es keinen Spielserver: Der Spielraum läuft dort im Browser
+# (app/public/local-room.js) und braucht dafür eine Kopie der Spielregeln aus app/src/logic.js.
+name: Spiel veröffentlichen
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Spielregeln für den Browser kopieren
+        run: cp app/src/logic.js app/public/logic.js
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./app/public
+          publish_branch: gh-pages
+          force_orphan: true
+          enable_jekyll: false

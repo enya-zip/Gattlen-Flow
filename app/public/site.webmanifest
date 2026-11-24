@@ -2,23 +2,23 @@
   "name": "Gattlen Flow",
   "short_name": "Gattlen Flow",
   "lang": "de-CH",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#fbfbfb",
   "theme_color": "#34579f",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/icon-maskable.png",
+      "src": "icon-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
