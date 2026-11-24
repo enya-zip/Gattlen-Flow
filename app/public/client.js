@@ -1,3 +1,4 @@
+import{setupLeaderboard}from"/leaderboard.js";
 const $=id=>document.getElementById(id);
 const strings={
  connected:"Live gespeichert",connecting:"Verbinden …",offline:"Verbindung unterbrochen",
@@ -111,4 +112,6 @@ $("share").onclick=async()=>{const v=view,u=new URL(location.origin+"/");if(v.mo
 document.addEventListener("keydown",e=>{if(e.code==="Escape")return;if(e.code==="KeyH"&&!document.querySelector("dialog[open]"))showDialog("help-dialog");});
 if(params.get("debug")==="1"){const el=$("debug");el.hidden=false;let last=performance.now(),count=0;function frame(now){count++;if(now-last>=1000){el.textContent="FPS "+Math.round(count*1000/(now-last))+" · 25 tiles · SVG · "+(connected?"online":"offline");last=now;count=0;}requestAnimationFrame(frame);}requestAnimationFrame(frame);}
 document.addEventListener("visibilitychange",()=>{if(document.hidden)music.pause();else if(settings.sound)music.play().catch(()=>{});});
+function journey(){let score=0,levels=0,stars=0;for(let n=1;n<=12;n++){const r=records["campaign:"+n+":1"];if(!r)continue;levels++;score+=Math.min(1000,Math.max(100,Number(r.score)||0));stars+=Math.min(3,Math.max(1,Number(r.stars)||1));}return levels?{id:score+"-"+levels+"-"+stars,score,levels,stars}:null;}
+setupLeaderboard({getRun:journey,onContinue:()=>{if(view?.won)$("next").click();}});
 connect();
