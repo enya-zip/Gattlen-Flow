@@ -1,7 +1,7 @@
 # Rangliste einrichten (Supabase)
 
 Gattlen Flow nutzt dasselbe Supabase-Projekt wie Iischi Party («Ranglisten der Spiele»), aber eigene Tabellen (`gattlen_flow_…`).
-Die Rangliste speichert Name, E-Mail-Adresse und Punkte. Andere Spieler sehen nur **Platz, Name und Punkte**.
+Die Rangliste speichert Name, E-Mail-Adresse und Zeit. Andere Spieler sehen nur **Platz, Name, Zeit und Züge**.
 E-Mail-Adressen sind nur im Supabase-Dashboard sichtbar.
 
 ## Was gezählt wird
@@ -32,7 +32,7 @@ sonst würde der Browser die Verbindung blockieren.
 Supabase → **Table Editor**:
 - `gattlen_flow_rangliste`: beste Zeit pro Spieler und Level mit Level, Platz, Name, E-Mail, Sekunden, Zügen, Tipps, Anzahl Einträge und Datum.
 - `gattlen_flow_alle_spiele`: alle einzelnen Einträge. Hier lassen sich Einträge löschen
-  (z. B. bei Auskunfts- oder Löschanfragen nach Datenschutzgesetz oder bei verdächtigen Punktzahlen).
+  (z. B. bei Auskunfts- oder Löschanfragen nach Datenschutzgesetz oder bei verdächtigen Zeiten).
 
 ## Gut zu wissen
 - Pro E-Mail-Adresse sind höchstens 30 Einträge pro Stunde möglich (Spam-Schutz).
