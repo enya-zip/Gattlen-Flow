@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gattlen-flow.higgsfield.app/sitemap.xml
